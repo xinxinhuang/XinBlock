@@ -72,6 +72,7 @@ public class XinChain {
 		}
 	}
 	
+        //check the blockchain's first block is the same and consistent 
 	public boolean isFirstBlockValid() {
 		
 		XinBlock fb= blocks.get(0);
@@ -91,6 +92,7 @@ public class XinChain {
 		return true;
 	}
 	
+        //proof of work the newblock, comparing with previous block length, hash, and current hash
 	public boolean isValidnewBlock(XinBlock newBlock, XinBlock prevBlock) {
 		if(newBlock !=null && prevBlock !=null) {
 			if(prevBlock.getIndex()+1 != newBlock.getIndex()) {
@@ -110,6 +112,7 @@ public class XinChain {
 	
 	//all the nodes of this blockchain must be valid 
 	public boolean isBlockChainValid() {
+            
 		if(!isFirstBlockValid()) {
 			return false;
 		}
@@ -129,12 +132,12 @@ public class XinChain {
 	
 	//toStirng method to print blocks
 	public String toString() {
+            
 		StringBuilder builder = new StringBuilder();
 		
 		for (XinBlock block:blocks) {
 			builder.append(block).append("\n");
 		}
-		
 		return builder.toString();
 	}
 	
